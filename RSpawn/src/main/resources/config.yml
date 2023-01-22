@@ -1,0 +1,42 @@
+Teleport:
+  death: true
+  join: true
+  title: ""
+  subtitle: ""
+
+Death:
+  auto respawn: false
+  title: "&4✘ Ｄｅａｔｈ! ✘"
+  subtitle: "&f▶ &7Вы были убиты &c$killer&7!"
+
+Prevent death:
+
+  enable: false
+
+  Rebirth:
+    # Enable the option for disable respawn wait time.
+    enable: true
+    # Rebirth gamemode
+    pre-gamemode: SPECTATOR
+    # Respawn gamemode
+    post-gamemode: ADVENTURE
+
+    Delay:
+      title: "&6✛ Ｗaiting. . ."
+      subtitle: "&f▶ &7Вы будете возраждены через &c$delay&7 секунд!"
+      default: 5
+      permissions:
+        - cd.10 10
+        - cd.20 10
+        - cd.30 10
+        - cd.40 10
+        - cd.50 10
+        - cd.60 10
+        - cd.120 10
+        - essentials.kits.legend 10
+        - essentials.kits.elite 15
+        - essentials.kits.dragon 20
+        - essentials.kits.silver 10
+        - essentials.kits.golden 15
+        - essentials.kits.diamond 20
+        - essentials.kits.sponsor 0
