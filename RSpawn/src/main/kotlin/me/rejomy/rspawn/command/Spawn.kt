@@ -11,7 +11,7 @@ import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.entity.Player
 import java.io.File
 
-object Spawn : CommandExecutor {
+class Spawn : CommandExecutor {
 
     override fun onCommand(
         sender: CommandSender?,
@@ -19,24 +19,29 @@ object Spawn : CommandExecutor {
         label: String?,
         args: Array<out String>?
     ): Boolean {
-        if (args?.size == 0) {
+        if (args == null || args.isEmpty()) {
 
             if(sender is Player) {
 
                 val player: Player = sender
 
+                if( INSTANCE.spawn == null ) {
+                    sender.sendMessage("Spawn not found!")
+                    return true
+                }
+
                 player.teleport(INSTANCE.spawn)
-                player.sendTitle(INSTANCE.config.getString("Teleport.title"), INSTANCE.config.getString("Teleport.subtitle"))
+                player.sendTitle(INSTANCE.config.getString("Teleport.title").replace("&", "§"), INSTANCE.config.getString("Teleport.subtitle").replace("&", "§"))
 
             } else
                 sender!!.sendMessage("Error! This command allowed for player!")
             return true
 
         } else {
-            when (args?.get(0)) {
+            when (args[0]) {
                 "set" -> {
 
-                    if(args.size == 2 || sender !is Player) {
+                    if(args.size != 2 || sender !is Player) {
                         sender!!.sendMessage("Error! Illegal arguments or sender!")
                         return true
                     }

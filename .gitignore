@@ -1,0 +1,4 @@
+# Project exclude paths
+/RSpawn/.gradle/
+/RSpawn/build/
+/RSpawn/build/classes/kotlin/main/

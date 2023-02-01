@@ -1,0 +1,20 @@
+name: RSpawn
+version: 1
+main: me.rejomy.rspawn.Main
+commands:
+  spawn:
+    aliases:
+      - spaw
+      - spa
+      - span
+      - spwn
+      - sawn
+      - pawn
+      - s[awn
+      - спавн
+      - спв
+      - спав
+      - спан
+      - спвн
+      - савн
+      - павн

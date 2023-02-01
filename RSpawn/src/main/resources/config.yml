@@ -21,6 +21,9 @@ Prevent death:
     # Respawn gamemode
     post-gamemode: ADVENTURE
 
+    title: "&a❤ Ｒｅｓｐａｗｎ! ❤"
+    subtitle: "&f▶ &7Вы были возраждены&f!"
+
     Delay:
       title: "&6✛ Ｗaiting. . ."
       subtitle: "&f▶ &7Вы будете возраждены через &c$delay&7 секунд!"

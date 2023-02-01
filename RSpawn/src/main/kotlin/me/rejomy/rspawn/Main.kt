@@ -17,17 +17,18 @@ class Main : JavaPlugin() {
 
     var delay = config.getStringList("Prevent death.Rebirth.Delay.permissions")
     var defaultDelay = config.getInt("Prevent death.Rebirth.Delay.default")
-    lateinit var spawn: Location
-    lateinit var respawn: Location
+    var spawn: Location? = null
+    var respawn: Location? = null
 
     override fun onEnable() {
         INSTANCE = this
 
-        val file = File(dataFolder, File.separator + "location.yml")
-        val config: FileConfiguration = YamlConfiguration.loadConfiguration(file)
+        saveDefaultConfig()
 
-        if(file.exists()) file.createNewFile()
-        else {
+        val file = File(dataFolder, "location.yml")
+
+        if(file.exists()) {
+            val config: FileConfiguration = YamlConfiguration.loadConfiguration(file)
             spawn = Location(Bukkit.getWorld(config.getString("Spawn.world")),
                 config.getDouble("Spawn.x"),
                 config.getDouble("Spawn.y"),
@@ -43,10 +44,10 @@ class Main : JavaPlugin() {
                 config.getDouble("Respawn.pitch").toFloat())
         }
 
-        Bukkit.getPluginManager().registerEvents(ConnectionListener, this)
-        Bukkit.getPluginManager().registerEvents(DeathListener, this)
-        Bukkit.getPluginManager().registerEvents(FightListener, this)
-        getCommand("spawn").executor = Spawn
+        Bukkit.getPluginManager().registerEvents(ConnectionListener(), this)
+        Bukkit.getPluginManager().registerEvents(DeathListener(), this)
+        Bukkit.getPluginManager().registerEvents(FightListener(), this)
+        getCommand("spawn").executor = Spawn()
 
     }
 
